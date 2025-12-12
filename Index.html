@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedant | Marketing Professional</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --bg: #0f0f11;
+            --surface: #1a1a1e;
+            --text-main: #ffffff;
+            --text-sec: #a1a1aa;
+            --accent: #6366f1; /* Indigo/Tech Blue */
+            --accent-glow: rgba(99, 102, 241, 0.4);
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3 { font-weight: 700; letter-spacing: -0.03em; }
+        h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1.1; margin-bottom: 20px; }
+        h2 { font-size: 2rem; margin-bottom: 2rem; color: var(--text-main); }
+        p { color: var(--text-sec); font-size: 1.1rem; max-width: 600px; }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        section { padding: 100px 0; }
+
+        /* --- HEADER --- */
+        header {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-weight: 700; font-size: 1.2rem; }
+        .nav-links a { margin-left: 20px; font-size: 0.9rem; color: var(--text-sec); }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%; right: -10%;
+            width: 500px; height: 500px;
+            background: var(--accent);
+            filter: blur(150px);
+            opacity: 0.15;
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: var(--text-main);
+            color: var(--bg);
+            font-weight: 600;
+            border-radius: 50px;
+        }
+
+	.cta-btn.secondary {
+    	    background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--text-main);
+            margin-left: 15px; /* Spacing between the two buttons */
+	}
+
+	.cta-btn.secondary:hover {
+    	    background: rgba(255, 255, 255, 0.1);
+    	    border-color: var(--text-main);
+    	    transform: translateY(-2px);
+	}
+
+
+	@media (max-width: 768px) {
+    	    .cta-btn { display: block; width: 100%; text-align: center; margin: 10px 0 0 0 !important; }
+	}
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255,255,255,0.1);
+        }
+
+        /* --- WORK GRID --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 30px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+        }
+
+        .card h3 { margin-bottom: 10px; font-size: 1.5rem; }
+        .card .tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            margin-bottom: 15px;
+            border: 1px solid var(--accent-glow);
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 50px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 50px;
+            text-align: center;
+        }
+        .socials a { margin: 0 10px; color: var(--text-sec); }
+        .socials a:hover { color: var(--text-main); }
+
+        /* --- MOBILE TWEAKS --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">VEDANT.</div> <nav class="nav-links">
+                <a href="#work">Work</a>
+                <a href="#about">About</a>
+                <a href="mailto:your-email@example.com">Contact</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <h1>Marketing that works.<br> <span style="color: var(--text-sec);">Driven by data, powered by AI.</span></h1>
+            <p>I bridge the gap between creative storytelling and technical growth. Currently building next-gen marketing strategies in India.</p>
+            <div class="button-group">
+    		<a href="#work" class="cta-btn">View Selected Work</a>
+    
+    		<a href="resume.pdf" target="_blank" class="cta-btn secondary">View Resume</a>
+	    </div>        
+	    </section>
+
+        <section id="work">
+            <h2>Selected Projects</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <span class="tag">Strategy</span>
+                    <h3>Growth Campaign A</h3>
+                    <p>Designed a go-to-market strategy that increased user acquisition by 40% in 3 months using organic channels.</p>
+                </div>
+
+                <div class="card">
+                    <span class="tag">Tech / AI</span>
+                    <h3>Automated Funnels</h3>
+                    <p>Implemented an AI-driven email workflow to nurture leads, resulting in a 15% uplift in conversion rates.</p>
+                </div>
+
+                <div class="card">
+                    <span class="tag">Research</span>
+                    <h3>Market Expansion</h3>
+                    <p>Conducted deep-dive analysis on Tier-2 city behaviors to guide product positioning for a new launch.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                I am a marketing professional with an MSc in Marketing and a passion for technology. 
+                Unlike traditional marketers, I lean into the technical side—exploring how AI, data, and emerging tech (like VR) can reshape how brands connect with people.
+                <br><br>
+                When I'm not analyzing campaigns, you can find me exploring the latest in tech or on the road on two wheels.
+            </p>
+        </section>
+
+        <footer>
+            <div class="socials">
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter/X</a>
+                <a href="#">Email</a>
+            </div>
+            <br>
+            <p style="font-size: 0.8rem; opacity: 0.5;">&copy; 2025 Vedant. Built with code.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
