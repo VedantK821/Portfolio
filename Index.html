@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vedant | Marketing Professional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         /* --- CSS VARIABLES & RESET --- */
         :root {
@@ -75,9 +76,12 @@
             border-radius: 50%;
         }
 
+        .button-group {
+            margin-top: 30px;
+        }
+
         .cta-btn {
             display: inline-block;
-            margin-top: 30px;
             padding: 12px 30px;
             background: var(--text-main);
             color: var(--bg);
@@ -85,26 +89,22 @@
             border-radius: 50px;
         }
 
-	.cta-btn.secondary {
-    	    background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: var(--text-main);
-            margin-left: 15px; /* Spacing between the two buttons */
-	}
-
-	.cta-btn.secondary:hover {
-    	    background: rgba(255, 255, 255, 0.1);
-    	    border-color: var(--text-main);
-    	    transform: translateY(-2px);
-	}
-
-
-	@media (max-width: 768px) {
-    	    .cta-btn { display: block; width: 100%; text-align: center; margin: 10px 0 0 0 !important; }
-	}
         .cta-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(255,255,255,0.1);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--text-main);
+            margin-left: 15px; 
+        }
+        
+        .cta-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--text-main);
+            transform: translateY(-2px);
         }
 
         /* --- WORK GRID --- */
@@ -131,6 +131,7 @@
         }
 
         .card h3 { margin-bottom: 10px; font-size: 1.5rem; }
+        
         .card .tag {
             display: inline-block;
             font-size: 0.75rem;
@@ -156,15 +157,16 @@
         /* --- MOBILE TWEAKS --- */
         @media (max-width: 768px) {
             h1 { font-size: 3rem; }
+            .cta-btn { display: block; width: 100%; text-align: center; margin: 10px 0 0 0 !important; }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="container">
         <header>
-            <div class="logo">VEDANT.</div> <nav class="nav-links">
+            <div class="logo">VEDANT.</div> 
+            <nav class="nav-links">
                 <a href="#work">Work</a>
                 <a href="#about">About</a>
                 <a href="mailto:your-email@example.com">Contact</a>
@@ -174,12 +176,12 @@
         <section class="hero">
             <h1>Marketing that works.<br> <span style="color: var(--text-sec);">Driven by data, powered by AI.</span></h1>
             <p>I bridge the gap between creative storytelling and technical growth. Currently building next-gen marketing strategies in India.</p>
+            
             <div class="button-group">
-    		<a href="#work" class="cta-btn">View Selected Work</a>
-    
-    		<a href="resume.pdf" target="_blank" class="cta-btn secondary">View Resume</a>
-	    </div>        
-	    </section>
+                <a href="#work" class="cta-btn">View Selected Work</a>
+                <a href="resume.pdf" target="_blank" class="cta-btn secondary">View Resume</a>
+            </div>      
+        </section>
 
         <section id="work">
             <h2>Selected Projects</h2>
