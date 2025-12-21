@@ -4,8 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vedant | Marketing Professional</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* --- SPOTLIGHT CURSOR --- */
+    .cursor-glow {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0,0,0,0) 70%);
+        position: fixed;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none; /* Crucial: lets you click through the glow */
+        z-index: 9999;
+        transition: width 0.2s, height 0.2s; /* Smooth expansion */
+    }
+
+/* Optional: Make it shrink when hovering over links */
+    a:hover ~ .cursor-glow {
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, rgba(0,0,0,0) 70%);
+    }
         /* --- CSS VARIABLES & RESET --- */
         :root {
             --bg: #0f0f11;
@@ -76,12 +94,9 @@
             border-radius: 50%;
         }
 
-        .button-group {
-            margin-top: 30px;
-        }
-
         .cta-btn {
             display: inline-block;
+            margin-top: 30px;
             padding: 12px 30px;
             background: var(--text-main);
             color: var(--bg);
@@ -89,22 +104,26 @@
             border-radius: 50px;
         }
 
+	.cta-btn.secondary {
+    	    background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--text-main);
+            margin-left: 15px; /* Spacing between the two buttons */
+	}
+
+	.cta-btn.secondary:hover {
+    	    background: rgba(255, 255, 255, 0.1);
+    	    border-color: var(--text-main);
+    	    transform: translateY(-2px);
+	}
+
+
+	@media (max-width: 768px) {
+    	    .cta-btn { display: block; width: 100%; text-align: center; margin: 10px 0 0 0 !important; }
+	}
         .cta-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(255,255,255,0.1);
-        }
-
-        .cta-btn.secondary {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: var(--text-main);
-            margin-left: 15px; 
-        }
-        
-        .cta-btn.secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--text-main);
-            transform: translateY(-2px);
         }
 
         /* --- WORK GRID --- */
@@ -131,7 +150,6 @@
         }
 
         .card h3 { margin-bottom: 10px; font-size: 1.5rem; }
-        
         .card .tag {
             display: inline-block;
             font-size: 0.75rem;
@@ -143,7 +161,63 @@
             padding: 4px 10px;
             border-radius: 4px;
         }
+        /* --- EXPERIENCE LIST STYLES --- */
+        .job-row {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px; /* Space between jobs */
+            transition: 0.3s;
+        }
 
+        .job-row:hover {
+            border-color: var(--accent);
+            transform: translateX(10px); /* Subtle slide to the right on hover */
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap; /* Wraps on mobile */
+        }
+
+        .job-role {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .job-company {
+            color: var(--accent);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .job-date {
+            font-size: 0.9rem;
+            color: var(--text-sec);
+            background: rgba(255,255,255,0.05);
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        .job-list li {
+            color: var(--text-sec);
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .job-list li::before {
+            content: '▹'; /* Cool arrow bullet point */
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
         /* --- FOOTER --- */
         footer {
             padding: 50px 0;
@@ -157,17 +231,17 @@
         /* --- MOBILE TWEAKS --- */
         @media (max-width: 768px) {
             h1 { font-size: 3rem; }
-            .cta-btn { display: block; width: 100%; text-align: center; margin: 10px 0 0 0 !important; }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="container">
         <header>
-            <div class="logo">VEDANT.</div> 
-            <nav class="nav-links">
-                <a href="#work">Work</a>
+            <div class="logo">VEDANT.</div> <nav class="nav-links">
+                <a href="#work">Projects</a>
+                <a href="#experience">Experience</a>
                 <a href="#about">About</a>
                 <a href="mailto:your-email@example.com">Contact</a>
             </nav>
@@ -176,36 +250,96 @@
         <section class="hero">
             <h1>Marketing that works.<br> <span style="color: var(--text-sec);">Driven by data, powered by AI.</span></h1>
             <p>I bridge the gap between creative storytelling and technical growth. Currently building next-gen marketing strategies in India.</p>
-            
             <div class="button-group">
-                <a href="#work" class="cta-btn">View Selected Work</a>
-                <a href="resume.pdf" target="_blank" class="cta-btn secondary">View Resume</a>
-            </div>      
-        </section>
+    		<a href="#work" class="cta-btn">View Selected Work</a>
+    
+    		<a href="resume.pdf" target="_blank" class="cta-btn secondary">View Resume</a>
+	    </div>        
+	    </section>
 
         <section id="work">
             <h2>Selected Projects</h2>
             <div class="grid">
-                
                 <div class="card">
-                    <span class="tag">Strategy</span>
-                    <h3>Growth Campaign A</h3>
-                    <p>Designed a go-to-market strategy that increased user acquisition by 40% in 3 months using organic channels.</p>
+                    <span class="tag">Consultancy / Strategy</span>
+                    <h3>NIVEA Future Leaders</h3>
+                    <p>
+                        <strong>Challenge:</strong> Design a £2M integrated marketing strategy to re-engage Gen Z consumers in the UK market.<br><br>
+                        <strong>Action:</strong> Developed a full-funnel proposal using AI segmentation and sustainability storytelling.<br><br>
+                        <strong>Result:</strong> Recognized by Beiersdorf mentors for strategic creativity and selected as a finalist representing University of Birmingham.
+                    </p>
                 </div>
-
+        
                 <div class="card">
-                    <span class="tag">Tech / AI</span>
-                    <h3>Automated Funnels</h3>
-                    <p>Implemented an AI-driven email workflow to nurture leads, resulting in a 15% uplift in conversion rates.</p>
+                    <span class="tag">Consultancy / ROI Framework</span>
+                    <h3>Global Influencer ROI</h3>
+                    <p>
+                        <strong>Challenge:</strong> Measure the true impact of cross-platform creator campaigns beyond vanity metrics.<br><br>
+                        <strong>Action:</strong> Built a framework integrating Earned Media Value (EMV) with sentiment analysis and conversion data.<br><br>
+                        <strong>Result:</strong> Created a replicable model for FMCG brands to optimize ad spend and mitigate influencer risk.
+                    </p>
                 </div>
-
+        
                 <div class="card">
-                    <span class="tag">Research</span>
-                    <h3>Market Expansion</h3>
-                    <p>Conducted deep-dive analysis on Tier-2 city behaviors to guide product positioning for a new launch.</p>
+                    <span class="tag">AI Research</span>
+                    <h3>AI & Consumer Trust</h3>
+                    <p>
+                        <strong>Challenge:</strong> Address the "trust gap" in AI-driven advertising personalization.<br><br>
+                        <strong>Action:</strong> Conducted research on privacy-respecting ad models (cohort targeting) vs. invasive tracking.<br><br>
+                        <strong>Result:</strong> Formulated actionable ethical guidelines that enhance conversion potential without sacrificing brand authenticity.
+                    </p>
                 </div>
 
             </div>
+        </section>
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            
+            <div class="job-row">
+                <div class="job-header">
+                    <div>
+                        <div class="job-role">Technical Marketing Specialist</div>
+                        <div class="job-company">Mikado Foods Pvt. Ltd. (London, UK)</div>
+                    </div>
+                    <div class="job-date">July 2025 - Oct 2025</div>
+                </div>
+                <ul class="job-list">
+                    <li>Managed supplier compliance and artwork verification, ensuring 100% regulatory adherence for global markets.</li>
+                    <li>Streamlined documentation workflows using proprietary tools, significantly reducing approval turnaround times.</li>
+                    <li>Aligned design and safety specifications across stakeholders to support seamless product launches.</li>
+                </ul>
+            </div>
+        
+            <div class="job-row">
+                <div class="job-header">
+                    <div>
+                        <div class="job-role">Omnichannel Marketing Specialist</div>
+                        <div class="job-company">Yellow Wills Pvt. Ltd. (Bangalore, IN)</div>
+                    </div>
+                    <div class="job-date">June 2023 - Sept 2023</div>
+                </div>
+                <ul class="job-list">
+                    <li>Supported digital campaigns across Google and Meta, improving targeting precision and budget efficiency.</li>
+                    <li>Conducted ROI analysis to inform content optimization and creative direction.</li>
+                    <li>Collaborated with content creators to expand audience reach and engagement.</li>
+                </ul>
+            </div>
+        
+            <div class="job-row">
+                <div class="job-header">
+                    <div>
+                        <div class="job-role">Market Analyst</div>
+                        <div class="job-company">Mera Kal (Bangalore, IN)</div>
+                    </div>
+                    <div class="job-date">April 2023 - June 2023</div>
+                </div>
+                <ul class="job-list">
+                    <li>Conducted market mapping to identify and qualify 130+ potential leads across key sectors.</li>
+                    <li>Developed promotional content in coordination with product teams to strengthen brand storytelling.</li>
+                    <li>Assisted in a 3-month digital content plan that boosted platform visibility.</li>
+                </ul>
+            </div>
+        
         </section>
 
         <section id="about">
@@ -228,6 +362,14 @@
             <p style="font-size: 0.8rem; opacity: 0.5;">&copy; 2025 Vedant. Built with code.</p>
         </footer>
     </div>
+    <div class="cursor-glow"></div>
 
+    <script>
+        const glow = document.querySelector('.cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+    </script>
 </body>
 </html>
